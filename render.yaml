@@ -1,0 +1,47 @@
+services:
+  # MongoDB Database
+  - type: pserv
+    name: localmart-mongodb
+    env: docker
+    plan: free
+    dockerImage: mongo:latest
+    disk:
+      name: localmart-db
+      sizeGB: 10
+    healthCheck:
+      path: /health
+      port: 27017
+
+  # Backend API
+  - type: web
+    name: localmart-api
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        value: ${localmart-mongodb.MONGODB_URL}
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PORT
+        value: 10000
+    healthCheck:
+      path: /health
+      port: 10000
+
+  # Frontend
+  - type: web
+    name: localmart-client
+    env: static
+    plan: free
+    buildCommand: cd client-new && npm install && npm run build
+    staticPublishPath: client-new/build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: ${localmart-api.URL}
+    healthCheck:
+      path: /
+      port: 3000
