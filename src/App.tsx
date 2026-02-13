@@ -2,14 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 
 // Types
-type User = {
-  id: string;
-  name: string;
-  email: string;
-  phone?: string;
-  role: 'customer' | 'shop_owner';
-};
-
 type Product = {
   id: string;
   name: string;
@@ -21,15 +13,6 @@ type Product = {
   icon?: string;
   quantity?: string;
   unit?: string;
-};
-
-type CartItem = {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-  weight?: string;
-  image: string;
 };
 
 type Role = {
@@ -70,7 +53,6 @@ interface Toast {
 
 function App() {
   const [currentView, setCurrentView] = useState<'auth' | 'shopkeeper-dashboard' | 'category' | 'customer-home'>('auth');
-  const [selectedRole, setSelectedRole] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showMultiCategoryModal, setShowMultiCategoryModal] = useState(false);
   const [shopName] = useState('मेरी दुकान 🏪');
@@ -228,12 +210,6 @@ function App() {
     };
     
     return translations[language]?.[key] || key;
-  };
-
-  // Debug function to check language state
-  const handleLanguageChange = (newLanguage: 'hindi' | 'english') => {
-    console.log('Language changed from', language, 'to', newLanguage);
-    setLanguage(newLanguage);
   };
 
   // Signup form state
@@ -528,8 +504,6 @@ function App() {
 
   // Role selection handler
   const handleRoleSelect = (roleId: string) => {
-    setSelectedRole(roleId);
-    
     if (roleId === 'customer') {
       setCurrentView('customer-home');
     } else if (roleId === 'shopkeeper') {
