@@ -1,145 +1,46 @@
-# LocalMart 🏪
+# Getting Started with Create React App
 
-A platform where local shops list products and customers buy from nearby shops (within 200 meters).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## What We Built So Far
+## Available Scripts
 
-### ✅ Backend API Complete
-- **User Authentication** (Register & Login)
-- **Shop Registration** (for shop owners only)
-- **Nearby Shop Search** (find shops within 200 meters)
-- **Database Models** (Users & Shops)
+In the project directory, you can run:
 
-## How to Run This Project
+### `npm start`
 
-### Step 1: Install Dependencies
-```bash
-npm install
-```
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Step 2: Start MongoDB
-Make sure MongoDB is running on your computer:
-```bash
-# If you have MongoDB installed
-mongod
-```
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-### Step 3: Start the Server
-```bash
-npm run server
-```
+### `npm test`
 
-The server will run on: http://localhost:5000
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## API Endpoints (What We Can Do)
+### `npm run build`
 
-### Authentication
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - Login user
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Shops
-- `POST /api/shops/register` - Register new shop (shop owners only)
-- `GET /api/shops/nearby?lat=X&lng=Y` - Find shops within 200 meters
-- `GET /api/shops/` - Get all shops
-- `GET /api/shops/:id` - Get specific shop
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## How to Test
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### 1. Register a Shop Owner
-```bash
-curl -X POST http://localhost:5000/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "John Shop Owner",
-    "email": "john@shop.com",
-    "password": "123456",
-    "phone": "9876543210",
-    "role": "shop_owner",
-    "location": {
-      "latitude": 12.9716,
-      "longitude": 77.5946
-    }
-  }'
-```
+### `npm run eject`
 
-### 2. Login and Get Token
-```bash
-curl -X POST http://localhost:5000/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email": "john@shop.com",
-    "password": "123456"
-  }'
-```
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-### 3. Register a Shop (use the token from login)
-```bash
-curl -X POST http://localhost:5000/api/shops/register \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
-  -d '{
-    "name": "Fresh Vegetables Store",
-    "description": "Fresh organic vegetables and fruits",
-    "category": "grocery",
-    "location": {
-      "latitude": 12.9716,
-      "longitude": 77.5946
-    },
-    "address": {
-      "street": "123 Main Street",
-      "area": "Koramangala",
-      "city": "Bangalore",
-      "pincode": "560034"
-    },
-    "contact": {
-      "phone": "9876543210",
-      "email": "fresh@shop.com"
-    },
-    "timings": {
-      "open": "09:00",
-      "close": "21:00"
-    }
-  }'
-```
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-### 4. Find Nearby Shops
-```bash
-curl "http://localhost:5000/api/shops/nearby?lat=12.9716&lng=77.5946"
-```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-## Next Steps (What We'll Build Next)
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-1. **Frontend (React App)** - User interface for customers and shop owners
-2. **Product Management** - Add/edit/delete products for shops
-3. **Order System** - Customers can place orders
-4. **Payment Integration** - Online payments
-5. **Real-time Notifications** - Order status updates
-6. **Mobile App** - Native mobile experience
+## Learn More
 
-## Project Structure
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-```
-localmart/
-├── server/
-│   ├── index.js          # Main server file
-│   ├── models/           # Database models
-│   │   ├── User.js       # User schema
-│   │   └── Shop.js       # Shop schema
-│   └── routes/           # API routes
-│       ├── auth.js       # Authentication routes
-│       └── shops.js      # Shop routes
-├── .env                  # Environment variables
-├── package.json          # Project dependencies
-└── README.md            # This file
-```
-
-## Technologies Used
-
-- **Node.js** - Server runtime
-- **Express.js** - Web framework
-- **MongoDB** - Database
-- **Mongoose** - Database modeling
-- **JWT** - Authentication
-- **bcryptjs** - Password hashing
-
-Happy Coding! 🚀
+To learn React, check out the [React documentation](https://reactjs.org/).

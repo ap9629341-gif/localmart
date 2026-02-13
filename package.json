@@ -1,31 +1,44 @@
 {
-  "name": "localmart",
-  "version": "1.0.0",
-  "description": "Local marketplace platform for local shops",
-  "main": "server/index.js",
-  "scripts": {
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "nodemon server/index.js",
-    "client": "cd client-new && npm start",
-    "client:build": "cd client-new && npm run build",
-    "build": "npm run client:build",
-    "start": "node server/index.js"
-  },
+  "name": "client-new",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^7.5.0",
-    "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express-validator": "^7.0.1",
-    "multer": "^1.4.5-lts.1"
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.126",
+    "@types/react": "^19.2.10",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
   },
-  "devDependencies": {
-    "nodemon": "^3.0.1",
-    "concurrently": "^8.2.0"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "keywords": ["marketplace", "local", "shops", "ecommerce"],
-  "author": "",
-  "license": "MIT"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
